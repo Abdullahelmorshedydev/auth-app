@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,6 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
 
+    Route::resource('posts', PostController::class);
+    Route::get('/notifications/markAsRead',[PostController::class, 'markAsRead'])->name('notification.read');
 });
